@@ -1,10 +1,20 @@
 import sys
 
-num = sys.stdin.readline()
+#arr = list(sys.stdin.readline().rstrip())
+arr = list(map(int,list(sys.stdin.readline().rstrip())))
 
-num = list(num)
+N = len(arr)
 
-num.sort(reverse=True)
+for i in range(N):
+    MAX = i
 
-for i in num:
-    print(i, end='')
+    for j in range(i,N):
+        if arr[j] > arr[MAX]:
+            MAX = j
+    if arr[i] < arr[MAX]:    
+        tmp = arr[i]
+        arr[i] = arr[MAX]
+        arr[MAX] = tmp
+
+for i in range(N):
+    print(arr[i], end='')
