@@ -11,7 +11,7 @@ WITH value AS (
       ELSE 'NONE' END AS duration_type
     FROM 
         car_rental_company_rental_history AS his
-    INNER JOIN 
+    JOIN 
         car_rental_company_car AS car ON car.car_id = his.car_id
     WHERE 
         car.car_type = '트럭')   
