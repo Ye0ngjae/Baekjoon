@@ -1,16 +1,18 @@
-import sys
+import sys 
 import math
 
-def is_primenum(x):
-    if x == 1:
-        return False
-    for i in range (2, int(math.sqrt(x) + 1)):
-    	if x % i == 0:
-            return False
-    return True
+M, N = map(int, sys.stdin.readline().split())
 
-a,b = map(int, sys.stdin.readline().split())
+A = [0] * (N+1)
 
-for i in range(a,b+1):
-    if is_primenum(i):
-        print(i)
+for i in range(2,N+1):
+    A[i] = i
+
+for i in range(2, int(math.sqrt(N)) + 1):
+    if A[i] != 0:
+        for j in range(i+i, N+1, i):
+            A[j] = 0
+
+for i in range(M, N+1):
+    if A[i] != 0:
+        print(A[i])
