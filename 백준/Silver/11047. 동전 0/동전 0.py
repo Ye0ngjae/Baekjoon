@@ -7,8 +7,6 @@ arr = []
 for i in range(N):
     arr.append(int(sys.stdin.readline().strip()))
 
-arr.sort()
-
 for i in range(N, 0, -1):
     if M == 0:
         break
