@@ -1,10 +1,9 @@
 import sys
 from heapq import heappush, heappop
 
-input = sys.stdin.readline
 inf = sys.maxsize
 
-n, m, k = map(int, input().split())
+n, m, k = map(int, sys.stdin.readline().split())
 graph =[[] for _ in range(n + 1)]
 dp = [[inf] * k for _ in range(n + 1)]
 heap = []
@@ -22,7 +21,7 @@ def dijkstra(start):
                 heappush(heap, [n_w, n_n])
 
 for _ in range(m):
-    a, b, c = map(int, input().split())
+    a, b, c = map(int, sys.stdin.readline().split())
     graph[a].append([b, c])
 
 dijkstra(1)
