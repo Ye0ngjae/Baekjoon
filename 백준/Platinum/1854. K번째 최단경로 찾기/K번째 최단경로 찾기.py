@@ -1,33 +1,33 @@
 import sys
 from heapq import heappush, heappop
 
-inf = sys.maxsize
+INF = sys.maxsize
 
 n, m, k = map(int, sys.stdin.readline().split())
-graph =[[] for _ in range(n + 1)]
-dp = [[inf] * k for _ in range(n + 1)]
+A =[[] for _ in range(n + 1)]
+distance = [[INF] * k for _ in range(n + 1)]
 heap = []
 
 def dijkstra(start):
     heappush(heap, [0, start])
-    dp[start][0] = 0
+    distance[start][0] = 0
     while heap:
         w, n = heappop(heap)
-        for n_n, wei in graph[n]:
+        for n_n, wei in A[n]:
             n_w = wei + w     
-            if n_w < dp[n_n][k-1]:
-                dp[n_n][k-1] = n_w
-                dp[n_n].sort()
+            if n_w < distance[n_n][k-1]:
+                distance[n_n][k-1] = n_w
+                distance[n_n].sort()
                 heappush(heap, [n_w, n_n])
 
 for _ in range(m):
     a, b, c = map(int, sys.stdin.readline().split())
-    graph[a].append([b, c])
+    A[a].append([b, c])
 
 dijkstra(1)
 
 for i in range(1, n + 1):
-    if dp[i][k-1] == inf:
+    if distance[i][k-1] == INF:
         print(-1)
     else:
-        print(dp[i][k-1])
+        print(distance[i][k-1])
