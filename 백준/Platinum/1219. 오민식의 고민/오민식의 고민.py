@@ -16,18 +16,18 @@ maxMoney[start] = benefit[start]
 
 for i in range(N + 101):
     for s,e,v in arr:
-        if maxMoney[s] == -1* sys.maxsize:
+        if maxMoney[s] == -INF:
             continue
-        elif maxMoney[s] == sys.maxsize:
-            maxMoney[e] = sys.maxsize
+        elif maxMoney[s] == INF:
+            maxMoney[e] = INF
         elif maxMoney[s] - v + benefit[e] > maxMoney[e]:
             maxMoney[e] = maxMoney[s] -v + benefit[e]
             if i >= N - 1:
-                maxMoney[e] = sys.maxsize
+                maxMoney[e] = INF
           
-if maxMoney[end] == -sys.maxsize:
+if maxMoney[end] == -INF:
     print("gg")
-elif maxMoney[end] == sys.maxsize:
+elif maxMoney[end] == INF:
     print("Gee")
 else:
     print(maxMoney[end])
